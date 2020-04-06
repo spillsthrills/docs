@@ -1,0 +1,1269 @@
+
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+        <meta name="description" content="Documentation for SAFE">
+      
+      
+        <link rel="canonical" href="http://safe-stack.github.io/docs/feature-debugging/">
+      
+      
+        <meta name="author" content="SAFE Stack">
+      
+      
+        <meta name="lang:clipboard.copy" content="Copy to clipboard">
+      
+        <meta name="lang:clipboard.copied" content="Copied to clipboard">
+      
+        <meta name="lang:search.language" content="en">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="No matching documents">
+      
+        <meta name="lang:search.result.one" content="1 matching document">
+      
+        <meta name="lang:search.result.other" content="# matching documents">
+      
+        <meta name="lang:search.tokenizer" content="[\s\-]+">
+      
+      <link rel="shortcut icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1, mkdocs-material-4.6.3">
+    
+    
+      
+        <title>Full Stack Debugging - SAFE Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/application.adb8469c.css">
+      
+        <link rel="stylesheet" href="../assets/stylesheets/application-palette.a8b3c06d.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="#fb8c00">
+      
+    
+    
+      <script src="../assets/javascripts/modernizr.86422ebf.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../assets/fonts/material-icons.css">
+    
+    
+    
+      
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="orange" data-md-color-accent="blue">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448" viewBox="0 0 416 448" id="__github"><path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19T128 352t-18.125-8.5-10.75-19T96 304t3.125-20.5 10.75-19T128 256t18.125 8.5 10.75 19T160 304zm160 0q0 10-3.125 20.5t-10.75 19T288 352t-18.125-8.5-10.75-19T256 304t3.125-20.5 10.75-19T288 256t18.125 8.5 10.75 19T320 304zm40 0q0-30-17.25-51T296 232q-10.25 0-48.75 5.25Q229.5 240 208 240t-39.25-2.75Q130.75 232 120 232q-29.5 0-46.75 21T56 304q0 22 8 38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0 37.25-1.75t35-7.375 30.5-15 20.25-25.75T360 304zm56-44q0 51.75-15.25 82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5T212 416q-19.5 0-35.5-.75t-36.875-3.125-38.125-7.5-34.25-12.875T37 371.5t-21.5-28.75Q0 312 0 260q0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25 30.875Q171.5 96 212 96q37 0 70 8 26.25-20.5 46.75-30.25T376 64q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34 99.5z"/></svg>
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#prerequisites" tabindex="0" class="md-skip">
+        Skip to content
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="http://safe-stack.github.io/docs/" title="SAFE Documentation" aria-label="SAFE Documentation" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon"></i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            <span class="md-header-nav__topic">
+              SAFE Documentation
+            </span>
+            <span class="md-header-nav__topic">
+              
+                Full Stack Debugging
+              
+            </span>
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+          
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" aria-label="search" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            
+
+
+  
+
+<a href="https://github.com/SAFE-Stack/docs/" title="Go to repository" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    SAFE-Stack/docs
+  </div>
+</a>
+          </div>
+        </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+      <main class="md-main" role="main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="http://safe-stack.github.io/docs/" title="SAFE Documentation" class="md-nav__button md-logo">
+      
+        <i class="md-icon"></i>
+      
+    </a>
+    SAFE Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      
+
+
+  
+
+<a href="https://github.com/SAFE-Stack/docs/" title="Go to repository" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    SAFE-Stack/docs
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href=".." title="Home" class="md-nav__link">
+      Home
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../intro/" title="Introduction" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../quickstart/" title="Quick Start" class="md-nav__link">
+      Quick Start
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../overview/" title="SAFE Stack Overview" class="md-nav__link">
+      SAFE Stack Overview
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      Components of SAFE
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        Components of SAFE
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../component-saturn/" title="Learn about Saturn" class="md-nav__link">
+      Learn about Saturn
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../component-azure/" title="Learn about Azure" class="md-nav__link">
+      Learn about Azure
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../component-fable/" title="Learn about Fable" class="md-nav__link">
+      Learn about Fable
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../component-elmish/" title="Learn about Elmish" class="md-nav__link">
+      Learn about Elmish
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
+    
+    <label class="md-nav__link" for="nav-6">
+      The SAFE Template
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        The SAFE Template
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../template-overview/" title="Overview" class="md-nav__link">
+      Overview
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../template-fake/" title="Run and Build the app" class="md-nav__link">
+      Run and Build the app
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-3" type="checkbox" id="nav-6-3">
+    
+    <label class="md-nav__link" for="nav-6-3">
+      Deployment Options
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-6-3">
+        Deployment Options
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../template-docker/" title="Deploy to Docker" class="md-nav__link">
+      Deploy to Docker
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../template-appservice/" title="Deploy to App Service" class="md-nav__link">
+      Deploy to App Service
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../template-gcp-appengine/" title="Deploy to Google Cloud AppEngine" class="md-nav__link">
+      Deploy to Google Cloud AppEngine
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../template-gcp-kubernetes/" title="Deploy to Google Cloud Kubernetes Engine" class="md-nav__link">
+      Deploy to Google Cloud Kubernetes Engine
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../template-heroku/" title="Deploy to Heroku" class="md-nav__link">
+      Deploy to Heroku
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../template-iis/" title="Deploy to IIS" class="md-nav__link">
+      Deploy to IIS
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../template-azure-ai/" title="Application Insights Integration" class="md-nav__link">
+      Application Insights Integration
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../template-azure-registration/" title="Registering with Azure" class="md-nav__link">
+      Registering with Azure
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../template-google-cloud/" title="Registering with Google Cloud" class="md-nav__link">
+      Registering with Google Cloud
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7" checked>
+    
+    <label class="md-nav__link" for="nav-7">
+      Features of SAFE
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-7">
+        Features of SAFE
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-1" type="checkbox" id="nav-7-1">
+    
+    <label class="md-nav__link" for="nav-7-1">
+      Client / Server Sharing
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-7-1">
+        Client / Server Sharing
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../feature-clientserver/" title="Sharing Overview" class="md-nav__link">
+      Sharing Overview
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../feature-clientserver-basics/" title="Sharing Types and Code" class="md-nav__link">
+      Sharing Types and Code
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../feature-clientserver-http/" title="Messaging using HTTP" class="md-nav__link">
+      Messaging using HTTP
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../feature-clientserver-remoting/" title="Messaging with Protocols" class="md-nav__link">
+      Messaging with Protocols
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../feature-clientserver-bridge/" title="Stateful Messaging through Bridge" class="md-nav__link">
+      Stateful Messaging through Bridge
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../feature-clientserver-serialization/" title="Serialization in SAFE" class="md-nav__link">
+      Serialization in SAFE
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Full Stack Debugging
+      </label>
+    
+    <a href="./" title="Full Stack Debugging" class="md-nav__link md-nav__link--active">
+      Full Stack Debugging
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    Prerequisites
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#launching-and-debugging-a-safe-application-in-vs-code" class="md-nav__link">
+    Launching and debugging a SAFE application in VS Code
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-vs-code-debugger" class="md-nav__link">
+    The VS Code debugger
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vs-code-tooling-basics" class="md-nav__link">
+    VS Code Tooling basics
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setting-breakpoints" class="md-nav__link">
+    Setting breakpoints
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-debug-output" class="md-nav__link">
+    Viewing debug output
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#restarting-your-application" class="md-nav__link">
+    Restarting your application
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#advanced-options" class="md-nav__link">
+    Advanced options
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#full-watch-mode" class="md-nav__link">
+    Full watch mode
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#debug-server-or-client-only" class="md-nav__link">
+    Debug Server or Client only
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#build-server" class="md-nav__link">
+    Build Server
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    Troubleshooting
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../feature-ssr/" title="Server Side Rendering" class="md-nav__link">
+      Server Side Rendering
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../feature-hmr/" title="Hot Module Replacement" class="md-nav__link">
+      Hot Module Replacement
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../feature-azurefunctions/" title="Working with Azure functions" class="md-nav__link">
+      Working with Azure functions
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8" type="checkbox" id="nav-8">
+    
+    <label class="md-nav__link" for="nav-8">
+      FAQs
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-8">
+        FAQs
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../faq-server/" title="Choosing your web server" class="md-nav__link">
+      Choosing your web server
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../faq-build/" title="Moving from dev to prod" class="md-nav__link">
+      Moving from dev to prod
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../faq-troubleshooting/" title="Troubleshooting" class="md-nav__link">
+      Troubleshooting
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../learning/" title="Learning Resources" class="md-nav__link">
+      Learning Resources
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../news/" title="News" class="md-nav__link">
+      News
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../events/" title="Events" class="md-nav__link">
+      Events
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../support/" title="Support" class="md-nav__link">
+      Support
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../testimonials/" title="Testimonials" class="md-nav__link">
+      Testimonials
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    Prerequisites
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#launching-and-debugging-a-safe-application-in-vs-code" class="md-nav__link">
+    Launching and debugging a SAFE application in VS Code
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-vs-code-debugger" class="md-nav__link">
+    The VS Code debugger
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vs-code-tooling-basics" class="md-nav__link">
+    VS Code Tooling basics
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setting-breakpoints" class="md-nav__link">
+    Setting breakpoints
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-debug-output" class="md-nav__link">
+    Viewing debug output
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#restarting-your-application" class="md-nav__link">
+    Restarting your application
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#advanced-options" class="md-nav__link">
+    Advanced options
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#full-watch-mode" class="md-nav__link">
+    Full watch mode
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#debug-server-or-client-only" class="md-nav__link">
+    Debug Server or Client only
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#build-server" class="md-nav__link">
+    Build Server
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    Troubleshooting
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/SAFE-Stack/docs/edit/master/docs/feature-debugging.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
+                
+                
+                  <h1>Full Stack Debugging</h1>
+                
+                <p>A powerful features of the SAFE Stack is that it supports combined client / server debugging in F#. This means that you can use a single IDE (in this case, <a href="https://code.visualstudio.com/">Visual Studio Code</a>) to debug <em>both client and server code</em> in the <strong>same IDE session</strong>.</p>
+<p>As of v0.38 of the SAFE Template, new SAFE applications come pre-configured with build, launch and debugging support in VS Code.</p>
+<h2 id="prerequisites">Prerequisites</h2>
+<ol>
+<li><strong>Install</strong> <a href="https://www.google.com/chrome/">Google Chrome</a>: Enables client-side debugging.</li>
+<li><strong>Configure Chrome</strong> with the following extensions:<ul>
+<li><a href="https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd?hl=en">Redux Dev Tools</a>: Provides improved debugging support in Chrome with Elmish and access to Redux debugging.</li>
+<li><a href="https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi/related">React Developer Tools</a>: Provides access to React debugging in Chrome.</li>
+</ul>
+</li>
+<li><strong>Configure VS Code</strong> with the following extensions:<ul>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=Ionide.Ionide-fsharp">Ionide</a>: Provides F# support to Code.</li>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp">C#</a>: Provides .NET Core debugging support.</li>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=msjsdiag.debugger-for-chrome">Debugger for Chrome</a>: Provides integrated client-side debugging in Code.</li>
+</ul>
+</li>
+</ol>
+<h2 id="launching-and-debugging-a-safe-application-in-vs-code">Launching and debugging a SAFE application in VS Code</h2>
+<p>The SAFE template allows you to launch a SAFE Stack application with both client and server debugging enabled automatically.</p>
+<ol>
+<li>Create a new SAFE application using the <a href="../template-overview/">SAFE template</a></li>
+<li>Open VS Code in the folder containing your application</li>
+<li>
+<p>Go to the Debug pane (<code>CTRL + Shift + D</code>) </p>
+<p><center><img src="../img/feature-debugging-1.png" style="height: 400px;"/></center></p>
+<blockquote>
+<p><strong>Note</strong>: Depending on your configuration, the Debug pane may be pinned to the left- or right-hand-side of VS Code.</p>
+</blockquote>
+</li>
+<li>
+<p>Ensure that <strong>Debug SAFE App</strong> is selected as the launch configuration</p>
+</li>
+<li>Hit <code>F5</code> to launch the application, or hit the green play button in the launch configuration panel</li>
+</ol>
+<p>That's it. VS Code will now automatically:</p>
+<ul>
+<li>Download all dependencies for both client and server</li>
+<li>Build both the client and server</li>
+<li>Start both client and server</li>
+<li>Attach debuggers for both the client and server simultaneously!</li>
+</ul>
+<blockquote>
+<p><strong>Note</strong>: When you stop debugging, you also need to kill the associated <code>Watch Client</code> task - see <a href="../faq-troubleshooting/#node-process-does-not-stop-after-stopping-the-debugger">details</a>.</p>
+</blockquote>
+<h2 id="the-vs-code-debugger">The VS Code debugger</h2>
+<p>This section explains the basics of debugging SAFE applications with VS Code. Refer to <a href="https://code.visualstudio.com/docs/editor/debugging">here</a> to learn more about the VS Code debugger.</p>
+<h3 id="vs-code-tooling-basics">VS Code Tooling basics</h3>
+<p>Once you start debugging a SAFE app, in the Terminal pane two Tasks will begin in parallel:</p>
+<ul>
+<li><strong>Watch Client</strong>: Builds and runs the client in hot module reload mode</li>
+<li>
+<p><strong>Build Server</strong>: Builds and runs the server</p>
+<p><center><img src="../img/feature-debugging-2.png" style="height: 200px;"/></center></p>
+</li>
+</ul>
+<p>Low-level output from the command line of both client and server can be seen in the appropriate Terminal window. Observe that the floating Debug control contains two active debugging sessions:</p>
+<ul>
+<li><strong>Debug Client</strong>: Selects the Client debug session</li>
+<li>
+<p><strong>Debug Server</strong>: Selects the Server debug session</p>
+<p><center><img src="../img/feature-debugging-3.png" style="height: 100px;"/></center></p>
+</li>
+</ul>
+<p>Selecting one or the other will instruct the Debug pane to show details for that "side" of the application e.g. breakpoints, call stack etc.</p>
+<h3 id="setting-breakpoints">Setting breakpoints</h3>
+<p>To set a breakpoint, simply highlight the line of code that you wish to stop on and hit <code>F9</code>, or click on the left-side gutter of the code window; a red dot will appear to show the breakpoint is set. You can see more on VS Code breakpoints <a href="https://code.visualstudio.com/docs/editor/debugging#_breakpoints">here</a>.</p>
+<p>Here you can see a breakpoint that has been hit in the <code>update</code> method of the sample application that is bundled with the SAFE template.</p>
+<p><center><img src="../img/feature-debugging-4.png" style="height: 200px;"/></center></p>
+<h3 id="viewing-debug-output">Viewing debug output</h3>
+<p>Debug output from Chrome will automatically be sent to the integrated Debug Console. This is especially useful for Elmish applications, as you can view Elmish messages and model updates directly in the IDE.</p>
+<p><center><img src="../img/feature-debugging-6.png" style="height: 200px;"/></center></p>
+<h2 id="restarting-your-application">Restarting your application</h2>
+<p>In the standard launch mode seen above, hot module reloading is enabled on the client, so changes that are made to your Fable application will occur immediately.</p>
+<p>However, in order to support debugging, watch mode is not enabled on the server; server changes require a restart of the server debugging session: Having ensured that Debug Server is selected in the floating Debug control, select the Restart icon or hit <code>CTRL + SHIFT + F5</code>. The server will stop, rebuild and restart with the debugger automatically re-attached.</p>
+<h2 id="advanced-options">Advanced options</h2>
+<p>The SAFE template comes with several other modes of operation for debugging:</p>
+<h3 id="full-watch-mode">Full watch mode</h3>
+<p>If you prefer to use "watch" mode on both client <em>and</em> server, choose the <strong>Watch SAFE app</strong> option from the Debug Launcher. Here, changes to any server file will automatically initiate a restart of it. However, whilst you will still be able to debug the client, in this mode there is no capability for server-side debugging.</p>
+<h3 id="debug-server-or-client-only">Debug Server or Client only</h3>
+<p>You can also launch and debug either the client or server in isolation. This may be useful if you are running the other component separately e.g. through FAKE, the <code>dotnet</code> command line tool directly or via Visual Studio. You can initiate this by choosing either <strong>Debug Client</strong> or <strong>Debug Server</strong> as required.</p>
+<h3 id="build-server">Build Server</h3>
+<p>You can initiate a restore and rebuild of the server by hitting <code>CTRL + SHIFT + B</code> and selecting <strong>Build Server</strong> from the drop-down.</p>
+<h2 id="troubleshooting">Troubleshooting</h2>
+<p>Still have issues getting the debugger to work? Check out the <a href="../faq-troubleshooting/">troubleshooting</a> page.</p>
+                
+                  
+                
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+
+<!-- Application footer -->
+<footer class="md-footer">
+
+  <!-- Link to previous and/or next page -->
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+
+        <!-- Link to previous page -->
+        
+          <a href="/docs/feature-clientserver-serialization/"
+              title="Serialization in SAFE"
+              class="md-flex md-footer-nav__link md-footer-nav__link--prev"
+              rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back
+                    md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch
+                  md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Serialization in SAFE
+              </span>
+            </div>
+          </a>
+        
+
+        <!-- Link to next page -->
+        
+          <a href="/docs/feature-ssr/" title="Server Side Rendering"
+              class="md-flex md-footer-nav__link md-footer-nav__link--next"
+              rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch
+                  md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Server Side Rendering
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward
+                    md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+
+  <!-- Further information -->
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+
+      <!-- Copyright and theme information -->
+      <div class="md-footer-copyright">
+        Supported by
+        <a href="http://lambdafactory.io">
+            λFactory</a>
+        and
+        <a href="https://compositional-it.com/">
+          Compositional IT</a>
+      </div>
+
+      <!-- Social links -->
+      
+        
+  <div class="md-footer-social">
+    <link rel="stylesheet" href="../assets/fonts/font-awesome.css">
+    
+      <a href="https://github.com/SAFE-Stack" target="_blank" rel="noopener" title="github" class="md-footer-social__link fa fa-github"></a>
+    
+      <a href="https://twitter.com/safe_stack" target="_blank" rel="noopener" title="twitter" class="md-footer-social__link fa fa-twitter"></a>
+    
+      <a href="https://safe-stack.github.io/" target="_blank" rel="noopener" title="globe" class="md-footer-social__link fa fa-globe"></a>
+    
+  </div>
+
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../assets/javascripts/application.c33a9706.js"></script>
+      
+      <script>app.initialize({version:"1.1",url:{base:".."}})</script>
+      
+    
+  </body>
+</html>
