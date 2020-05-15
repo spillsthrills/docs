@@ -1,5 +1,6 @@
 Please feel free to submit a PR to add testimonials to this page!
-
+## F# Beginner
+> It is very helpful for those of us trying to learn how to create a F# powered web applicaiton for the first time. It gives you confidence that you can build a solid production ready app at some point!
 
 ## msu solutions GmbH
 
